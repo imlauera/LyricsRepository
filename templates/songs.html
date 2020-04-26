@@ -17,9 +17,9 @@
     </head>
     <body>
         <div class="main">
-            <div style="position: absolute; right: 0;"><a href="#nothing">Edit</a> <a href="#">Delete</a></div>
             <div class="box">
                 {% for song in search_result: %}
+                <div style="text-align: right;"><a href="#nothing">Edit</a> <a href="#">Delete</a></div>
                 <h2>{{ song['title'] }}</h2>
                 <h3>{{ song['artist'] }}</h3>
                 <center><pre>{{ song['lyrics'] }}</pre></center>
