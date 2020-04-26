@@ -53,7 +53,7 @@
                 Song not found. Please add it to our db.
             </div>
             {% endif %}
-            <form method='post' action='http://localhost:8080/addsong'/>
+            <form method='post' action='http://localhost:8080/editsong'/>
                 <input type="text" placeholder="artist" name="artist"/>
                 {% if title %}
                 <input type="text" value="{{title}}" name="title"/><br><br>
