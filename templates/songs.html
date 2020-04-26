@@ -18,8 +18,12 @@
     <body>
         <div class="main">
             <div class="box">
+                <a href="/"><h1 style="font-size: 25px;">Sosearz</h1></a>
                 {% for song in search_result: %}
-                <div style="text-align: right;"><a href="#nothing">Edit</a> <a href="#">Delete</a></div>
+                <div style="text-align: right;">
+                    <a href="/editsong/{{song['artist']}}/{{song['title']}}">Edit</a>
+                    <a href="/deletesong/{{song['artist']}}/{{song['title']}}">Delete</a>
+                </div>
                 <h2>{{ song['title'] }}</h2>
                 <h3>{{ song['artist'] }}</h3>
                 <center><pre>{{ song['lyrics'] }}</pre></center>

@@ -20,7 +20,7 @@ class Song(db.Model):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("doc.html"), 404
+    return "404"
 
 @app.route('/')
 @app.route('/index')
@@ -43,9 +43,9 @@ def producto(name):
 def get_sale(transaction_id):
     return "La transacción es " + str(transaction_id)
 
-@app.route('/dashboard/<msg>')
-def dashboard(msg):
-    return '%s' % msg
+@app.route('/output/<msg>')
+def output(msg):
+    return render_template('output.html',msg=msg)
 
 @app.route('/addsong', methods=['POST','GET'])
 def upload():
@@ -58,7 +58,7 @@ def upload():
 
         db.session.add(newsong)
         db.session.commit()
-        return redirect(url_for('dashboard',msg='Success'))
+        return redirect(url_for('output',msg='Success'))
     else:
         return render_template('add_song.html')
 
@@ -69,10 +69,11 @@ le devolvemos un JSON y presentamos la información
 en el otro lado
 '''
 
-@app.route('/search/', methods=['POST','GET'])
+@app.route('/search/', methods=['GET'])
 def search():
-    if request.method == 'POST':
-        song_title = request.form['search_string'];
+    if request.method == 'GET':
+        song_title = request.args.get('q');
+        print(song_title)
         result = []
 
         for song in Song.query.filter(Song.title.like(f'{song_title}%')):
@@ -83,5 +84,26 @@ def search():
         return render_template('songs.html',search_result=result)
 
 
+@app.route('/editsong',methods=['GET','POST'])
+@app.route('/editsong/<artist>/<title>', methods=['POST','GET'])
+def edit(title=None, artist=None):
+    if request.method == 'GET':
+        song = Song.query.filter_by(artist=artist, title=title).first()
+        return render_template('edit_song.html',title=title, artist=artist, lyrics=song.lyrics)
+    elif request.method == 'POST':
+        song = Song.query.filter_by(artist=request.form['artist'], title=request.form['title']).first()
+        song.lyrics = request.form['lyrics']
+        print(request.form['lyrics'])
+        db.session.commit()
+        return redirect(url_for('output',msg='Success'))
+
+#/deletesong/Metallica/Master of Puppets
+@app.route('/deletesong/<artist>/<title>',methods=['GET'])
+def delete(artist=None, title=None):
+    song = Song.query.filter_by(artist=artist, title=title).delete()
+    db.session.commit()
+    return redirect(url_for('output',msg='Success'))
+
+    
 if __name__ == '__main__':
     app.run(debug=True,port=8080)

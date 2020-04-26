@@ -50,12 +50,19 @@
         </style>
     </head>
     <body>
+        <script>window.setTimeout(function(){ window.location = "http://localhost:8080/"; },1000)</script>
         <div class="main">
-            <div class="box">
+            <div class="box" style="text-align: center;">
 				<h1>Sosearz</h1>
-                <form action="/search/" method="get">
-                    <input type="text" placeholder="song's title" name="q"/>
-                </form>
+                {% if msg == "Success" %}
+                <div style="margin: auto; padding: 20px;  background-color: darkgreen;">
+                    <h2 style="color: white;">{{msg}}</h2>
+                </div>
+                {% else %}
+                <div style="margin: auto; padding: 20px; background-color: darkred;">
+                    <h2 style="color: white;">{{msg}}</h2>
+                </div>
+                {% endif %}
             </div>
         </div>
     </body>
