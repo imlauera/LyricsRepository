@@ -9,10 +9,15 @@
         .main a { color: purple; font-size: 20px; text-align: right; }
         .box{ width:100%;  }
         pre { font-family: 'Montserrat'; font-size: 15px; }
+        a { text-decoration: none; color: orange;}
+        a:link { color: #eee; }
+        a:hover { font-weight: bold;}
+        a:visited { color: grey; }
         </style>
     </head>
     <body>
         <div class="main">
+            <div style="position: absolute; right: 0;"><a href="#nothing">Edit</a> <a href="#">Delete</a></div>
             <div class="box">
                 {% for song in search_result: %}
                 <h2>{{ song['title'] }}</h2>
