@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/nist778/nist778/songs/maravilla.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///maravilla.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -106,4 +106,4 @@ def delete(artist=None, title=None):
 
     
 if __name__ == '__main__':
-    app.run(threaded=True,port=5000)
+    app.run(threaded=True,port=8080)
