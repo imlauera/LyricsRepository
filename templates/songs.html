@@ -23,7 +23,7 @@
                 <h2>{{ song['title'] }}</h2>
                 <h3>{{ song['artist'] }}</h3>
                 <div style="text-align: right; ">
-                    <a href="/editsong/{{song['artist']}}/{{song['title']}}">Edit</a><br>
+                    <a href="/editsong/{{song['id']}}">Edit</a><br>
                     <a href="/deletesong/{{song['artist']}}/{{song['title']}}">Delete</a>
                 </div>
                 <center><pre>{{ song['lyrics'] }}</pre></center>

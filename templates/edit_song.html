@@ -51,6 +51,7 @@
             <form method='post' action='/editsong'/>
                 <input type="text" value="{{artist}}" name="artist"/>
                 <input type="text" value="{{title}}" name="title"/><br><br>
+                <input type="hidden" value="{{id}}" name="id"/><br><br>
                 <textarea value="{{lyrics}}" name="lyrics"/>{{lyrics}}</textarea><br>
                 <input type="submit" value="Submit"/>
             </form>

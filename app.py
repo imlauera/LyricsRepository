@@ -50,6 +50,8 @@ def output(msg):
 @app.route('/addsong', methods=['POST','GET'])
 def upload():
     if request.method == 'POST':
+        if request.form['title'] != '' and request.form['artist'] and request.form['lyrics']:
+            return redirect(url_for('output',msg="Failed. The fields can't be empty"))
         newsong = Song(
             title=request.form['title'],
             artist=request.form['artist'],
@@ -77,7 +79,7 @@ def search():
         result = []
 
         for song in Song.query.filter(Song.title.like(f'{song_title}%')):
-            result += [{'artist':song.artist,'title':song.title,'lyrics':song.lyrics}]
+            result += [{'artist':song.artist,'title':song.title,'lyrics':song.lyrics,'id':song.id}]
 
         if result == []:
             return render_template('add_song.html',title=song_title,msg='Not found')
@@ -85,15 +87,20 @@ def search():
 
 
 @app.route('/editsong',methods=['GET','POST'])
-@app.route('/editsong/<artist>/<title>', methods=['POST','GET'])
-def edit(title=None, artist=None):
+@app.route('/editsong/<song_id>', methods=['POST','GET'])
+def edit(song_id=None):
     if request.method == 'GET':
-        song = Song.query.filter_by(artist=artist, title=title).first()
-        return render_template('edit_song.html',title=title, artist=artist, lyrics=song.lyrics)
+        song = Song.query.filter_by(id=song_id).first()
+        if song == None:
+          return redirect(url_for('output',msg="ID not found"))
+        return render_template('edit_song.html',id=song.id,title=song.title, artist=song.artist, lyrics=song.lyrics)
     elif request.method == 'POST':
-        song = Song.query.filter_by(artist=request.form['artist'], title=request.form['title']).first()
+        song = Song.query.filter_by(id=request.form['id']).first()
+        print(request.form['id'])
+        song.title = request.form['title']
+        song.artist = request.form['artist']
         song.lyrics = request.form['lyrics']
-        print(request.form['lyrics'])
+
         db.session.commit()
         return redirect(url_for('output',msg='Success'))
 
