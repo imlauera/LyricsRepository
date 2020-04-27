@@ -9,8 +9,8 @@
         .main a { color: purple; font-size: 20px; text-align: right; }
         .box{ width:100%;  }
         pre { font-family: 'Montserrat'; font-size: 15px; }
-        a { text-decoration: none; color: orange;}
-        a:link { color: #eee; }
+        a { text-decoration: none; }
+        a:link { color: #eee; font-size: 16px; }
         a:hover { font-weight: bold;}
         a:visited { color: grey; }
         </style>
@@ -22,8 +22,8 @@
                 {% for song in search_result: %}
                 <h2>{{ song['title'] }}</h2>
                 <h3>{{ song['artist'] }}</h3>
-                <div style="text-align: right;">
-                    <a href="/editsong/{{song['artist']}}/{{song['title']}}">Edit</a>
+                <div style="text-align: right; ">
+                    <a href="/editsong/{{song['artist']}}/{{song['title']}}">Edit</a><br>
                     <a href="/deletesong/{{song['artist']}}/{{song['title']}}">Delete</a>
                 </div>
                 <center><pre>{{ song['lyrics'] }}</pre></center>
