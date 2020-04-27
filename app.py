@@ -64,13 +64,23 @@ def upload():
     else:
         return render_template('add_song.html')
 
+
+@app.route('/view/<id_song>',methods=['GET'])
+def view(id_song=None):
+    if request.method == 'GET':
+        song = Song.query.filter_by(id=id_song).first()
+        if song == None:
+          return redirect(url_for('output',msg="ID not found"))
+
+        return render_template('view.html',id=song.id,title=song.title, artist=song.artist, lyrics=song.lyrics)
+
+
 '''
 TODO: /search/ debería retornar solamente JSON.
 Entonces desde la otra página manda consultas AJAX a esta
 le devolvemos un JSON y presentamos la información
 en el otro lado
 '''
-
 @app.route('/search/', methods=['GET'])
 def search():
     if request.method == 'GET':

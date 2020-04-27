@@ -8,7 +8,7 @@
         .main h1 { margin-bottom: 10px; text-align:center; }
         .main a { color: purple; font-size: 20px; text-align: right; }
         .box{ width:100%;  }
-		.song { background-color: #333; margin: 0px; width: 60%; margin: auto;}
+		.song { background-color: #333; margin: 0px; width: 85%; margin: auto;}
         .song:hover{ transition: all 0.5s; background-color: #444; }
         pre { font-family: 'Montserrat'; font-size: 15px; }
         a { text-decoration: none; }
@@ -23,20 +23,17 @@
         <div class="main">
             <div class="box">
                 <a href="/"><h1 style="font-size: 25px;">Sosearz</h1></a>
-                {% for song in search_result: %}
                 <div class="song">
                     <div class="container">
 						<div style="text-align: right;">
-							<a href="/editsong/{{song['id']}}">Edit</a><br>
-							<a href="/deletesong/{{song['artist']}}/{{song['title']}}">Delete</a><br>
-							<a href="/view/{{song['id']}}">Read</a></center>
+							<a href="/editsong/{{id}}">Edit</a><br>
+							<a href="/deletesong/{{artist}}/{{title}}">Delete</a><br>
 						</div>
-                        <p><b>{{ song['title'] }}</b></p>
-                        <small>{{ song['artist'] }}</small>
-                    <center><pre>{{ song['lyrics'][:175]+'...' }}</pre></center>
+                        <p><b>{{ title }}</b></p>
+                        <small>{{ artist }}</small>
+                    <center><pre>{{ lyrics }}</pre></center>
                     </div>
                 </div>
-                {% endfor %}
         </div>
     </body>
 </html>
