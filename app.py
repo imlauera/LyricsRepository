@@ -33,7 +33,6 @@ def index():
         song['artist']
         song['lyrics']
     '''
-    print('asdf')
     return render_template('index.html', song_info=songs )
 
 @app.route('/producto/<name>')
