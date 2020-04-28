@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask
 from flask import render_template,redirect,url_for
 from flask import request
@@ -32,7 +33,7 @@ def index():
         song['artist']
         song['lyrics']
     '''
-
+    print('asdf')
     return render_template('index.html', song_info=songs )
 
 @app.route('/producto/<name>')
@@ -50,7 +51,7 @@ def output(msg):
 @app.route('/addsong', methods=['POST','GET'])
 def upload():
     if request.method == 'POST':
-        if request.form['title'] != '' and request.form['artist'] and request.form['lyrics']:
+        if request.form['title'] == '' or request.form['artist'] == '' or request.form['lyrics'] == '':
             return redirect(url_for('output',msg="Failed. The fields can't be empty"))
         newsong = Song(
             title=request.form['title'],
