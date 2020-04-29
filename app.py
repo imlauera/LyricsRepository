@@ -111,8 +111,9 @@ def edit(song_id=None):
         song.title = request.form['title']
         song.artist = request.form['artist']
         song.lyrics = request.form['lyrics']
-
+        #try:
         db.session.commit()
+        #except:  
         return redirect(url_for('output',msg='Success'))
 
 #/deletesong/Metallica/Master of Puppets
