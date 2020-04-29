@@ -104,6 +104,7 @@ def edit(song_id=None):
         if song == None:
           return redirect(url_for('output',msg="ID not found"))
         return render_template('edit_song.html',id=song.id,title=song.title, artist=song.artist, lyrics=song.lyrics)
+    
     elif request.method == 'POST':
         song = Song.query.filter_by(id=request.form['id']).first()
         print(request.form['id'])
