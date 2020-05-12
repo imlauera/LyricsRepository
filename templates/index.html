@@ -1,58 +1,74 @@
 <html>
     <head>
         <title>{{ title }}</title>
-		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         <style>
-        body { margin:0; padding: 0;  font-family: 'Montserrat'; background-color: #222;}
-        .main { background: #222;  }
-        .main h1 { margin-bottom: 10px; text-align:center; }
-        .main a { color: purple; font-size: 20px; text-align: right; }
-        .box{ width:90%; position: absolute;  top: 50%; left: 50%;
-    -moz-transform: translateX(-50%) translateY(-90%);
-    -webkit-transform: translateX(-50%) translateY(-90%);
-    transform: translateX(-50%) translateY(-150%); }
-
-        input[type=submit] {
-          width: 100%;
-          background-color: #4CAF50;
-          color: white;
-          padding: 44px 20px;
-          margin: 8px 0;
-          font-family: 'Montserrat';
+          body {
+	      margin:0;
+	      padding: 0;
+	      font-family: 'Montserrat';
+	      background-color: #222;
+	  }
+          .main {
+	      background: #222;
+	  }
+          .main h1 {
+	      margin-bottom: 10px;
+	      text-align:center;
+	  }
+          .main a {
+	      color: purple;
+	      font-size: 20px;
+	      text-align: right;
+	  }
+          .box{
+	      width:90%;
+	      position: absolute;
+	      top: 50%;
+	      left: 50%;
+	      -moz-transform: translateX(-50%) translateY(-90%);
+	      -webkit-transform: translateX(-50%) translateY(-90%);
+	      transform: translateX(-50%) translateY(-150%);
+	  }
+          input[type=submit] {
+	      width: 100%;
+	      background-color: #4CAF50;
+	      color: white;
+	      padding: 44px 20px;
+	      margin: 8px 0;
+	      font-family: 'Montserrat';
 	      font-size: 40px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-          background-color: #45a049;
-          font-family: 'Montserrat';
-        }
-
-        input[type=text], select {
-          font-family: 'Montserrat';
+	      border: none;
+	      border-radius: 4px;
+	      cursor: pointer;
+          }
+          input[type=submit]:hover {
+	      background-color: #45a049;
+	      font-family: 'Montserrat';
+          }
+          input[type=text], select {
+	      font-family: 'Montserrat';
 	      font-size: 40px;
-		  font-weight: bold;
-          color: #999;
-          width: 100%;
-          padding: 22px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-        }
-
-		h1 { font-size: 50px; color: #9c9c9c; }
-
-
+	      font-weight: bold;
+	      color: #999;
+	      width: 100%;
+	      padding: 22px 20px;
+	      margin: 8px 0;
+	      display: inline-block;
+	      border: 1px solid #ccc;
+	      border-radius: 4px;
+	      box-sizing: border-box;
+          }
+	  h1 {
+	      font-size: 50px;
+	      color: #9c9c9c;
+	  }
         </style>
     </head>
     <body>
         <div class="main">
             <div class="box">
-				<h1>Sosearz</h1>
+		<h1>Sosearz</h1>
                 <form action="/search/" method="get">
                     <input type="text" placeholder="song's name" name="q"/>
                 </form>
